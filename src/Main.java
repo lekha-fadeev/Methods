@@ -1,14 +1,15 @@
 public class Main {
 
-    public static int customYear(int year) {
+    public static void initializingTimeInterval() {
+        int year = 2004;
         if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
             System.out.println(year + " год — високосный год");
         } else {
             System.out.println(year + " год — невисокосный год");
         }
-        return year;
     }
-    public static int custom() {
+
+    public static void mobileDeviceInitialization() {
         int clientOS = 0;
         int clientDeviceYear = 1445;
         if (clientOS == 1 && clientDeviceYear > 2015) {
@@ -22,22 +23,14 @@ public class Main {
                 System.out.println("Установите облегченную версию приложения для iOS по ссылке");
             }
         }
-        return clientOS;
     }
-    public static int Distance(int deliveryDistance) {
-        if (deliveryDistance < 20) {
-        System.out.println("Потребуется дней: 1");
-    } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-        System.out.println("Потребуется дней: 2");
-    } else {
-        if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            System.out.println("Потребуется дней: 3");
-        } else if (deliveryDistance >= 100) {
-            System.out.println("Доставки нет");
-        }
+
+    public static int calculateDeliveryDays(int distance) {
+        if (distance < 20) return 1;
+        else if (distance < 60) return 2;
+        else if (distance <= 100) return 3;
+        else return -1;
     }
-        return deliveryDistance;
-}
 
     public static void main(String[] args) {
         task1();
@@ -46,16 +39,17 @@ public class Main {
     }
     public static void task1() {
         System.out.println("Задача 1");
-        int oneyear = 2004;
-        customYear(oneyear);
+        initializingTimeInterval();
     }
     public static void task2() {
         System.out.println("Задача 2");
-        custom();
+        mobileDeviceInitialization();
     }
     public static void task3() {
         System.out.println("Задача 3");
-        int deliveryDistance = 2;
-        Distance(deliveryDistance);
+        int deliveryDistance = 1;
+        int daysForDelivery = calculateDeliveryDays(deliveryDistance);
+        if(daysForDelivery > 0) System.out.println("Потребуется дней: " + daysForDelivery);
+        else System.out.println("Доставки нет");
     }
 }
